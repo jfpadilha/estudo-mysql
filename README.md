@@ -6,7 +6,7 @@ Estudo e aprendizado Banco de Dados SQL, do básico a conteúdos mais avançados
 
 --> acessar seu terminal
 
-- Instalar mysql-server
+- Instalar mysql-server<br>
 $ sudo apt-get install mysql-server
 
 - Checar se mysql está executando:
