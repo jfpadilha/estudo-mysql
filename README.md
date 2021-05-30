@@ -15,7 +15,7 @@ $ service mysql status
 - Se precisar parar o serviço:
 
 
-<b>§ Configurando mysql:</b>
+<b>§ Configurando mysql:</b><br>
 $ sudo mysql_secure_installation
 
 	* neste instante você irá criar a senha para o usuário root do mysql, após isso será perguntado algumas questões para configuração, como segue abaixo:
@@ -26,7 +26,7 @@ $ sudo mysql_secure_installation
 		- Reload privilege tables (recarregar previlégios/permissoes da tabela): Recomendo "yes"
 
 
-<b>§ Conectando no mysql via terminal:</b>
+<b>§ Conectando no mysql via terminal:</b><br>
 $ sudo mysql -u root -p
 
 - basta informar sua senha do usuário root
@@ -42,7 +42,7 @@ $ sudo mysql -u root -p
 
 
 <b>§ CASO QUEIRA DESATIVAR O INÍCIO AUTOMÁTICO DO MYSQL EM SEU SISTEMA </b>
-- Abra o terminal
+- Abra o terminal<br>
 $ sudo systemctl disable mysql
 ou 
 $ sudo service mysql disable
