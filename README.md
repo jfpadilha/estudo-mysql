@@ -1,8 +1,8 @@
-# ESTUDO TEÓRICO-PRÁTICO BANCO DE DADOS MYSQL
+## ESTUDO TEÓRICO-PRÁTICO BANCO DE DADOS MYSQL
 
 Estudo e aprendizado Banco de Dados SQL, do básico a conteúdos mais avançados com projetos práticos.
 
-## INSTALANDO MYSQL EM SEU UBUNTU
+### INSTALANDO MYSQL EM SEU UBUNTU
 
 --> acessar seu terminal
 
@@ -16,9 +16,10 @@ $ service mysql status
 
 
 
-- Configurando mysql:
+####- Configurando mysql:
 $ sudo mysql_secure_installation
-	* neste instante você irá criar a senha para o usuário root do mysql, após isso será perguntado algumas questões para configuração, como segue abaixo:
+
+	- neste instante você irá criar a senha para o usuário root do mysql, após isso será perguntado algumas questões para configuração, como segue abaixo:
 
 		- "Validade password component" Para instalar o componente de controle e segurança de senha: opcional
 		
@@ -31,7 +32,7 @@ $ sudo mysql_secure_installation
 		- Reload privilege tables (recarregar previlégios/permissoes da tabela): Recomendo "yes"
 
 
--- Conectando no mysql via terminal:
+####-- Conectando no mysql via terminal:
 $ sudo mysql -u root -p
 
 - basta informar sua senha do usuário root
@@ -45,10 +46,8 @@ $ sudo mysql -u root -p
 - rodando todos esses comandos com sucesso teremos a certeza de instalação correta e bom funcionamento do seu mysql
 
 
-(-u: user | -p: informar senha)
 
-
-## CASO QUEIRA DESATIVAR O INÍCIO AUTOMÁTICO DO MYSQL EM SEU SISTEMA
+### CASO QUEIRA DESATIVAR O INÍCIO AUTOMÁTICO DO MYSQL EM SEU SISTEMA
 - Abra o terminal
 $ sudo systemctl disable mysql
 ou 
