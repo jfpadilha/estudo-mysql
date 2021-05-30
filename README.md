@@ -15,24 +15,18 @@ $ service mysql status
 - Se precisar parar o serviço:
 
 
-
-####- Configurando mysql:
+<b>§ Configurando mysql:</b>
 $ sudo mysql_secure_installation
 
-	- neste instante você irá criar a senha para o usuário root do mysql, após isso será perguntado algumas questões para configuração, como segue abaixo:
-
+	* neste instante você irá criar a senha para o usuário root do mysql, após isso será perguntado algumas questões para configuração, como segue abaixo:
 		- "Validade password component" Para instalar o componente de controle e segurança de senha: opcional
-		
 		- Remove anonymous (remover usuarios anonimos): Recomendo "yes"
-
 		- Disallow root remotely (desativar acesso root remoto): Recomendo "yes"
-
 		- Remove test dataBase (remover db de teste): Recomendo "yes"
-
 		- Reload privilege tables (recarregar previlégios/permissoes da tabela): Recomendo "yes"
 
 
-####-- Conectando no mysql via terminal:
+<b>§ Conectando no mysql via terminal:</b>
 $ sudo mysql -u root -p
 
 - basta informar sua senha do usuário root
@@ -47,7 +41,7 @@ $ sudo mysql -u root -p
 
 
 
-### CASO QUEIRA DESATIVAR O INÍCIO AUTOMÁTICO DO MYSQL EM SEU SISTEMA
+<b>§ CASO QUEIRA DESATIVAR O INÍCIO AUTOMÁTICO DO MYSQL EM SEU SISTEMA </b>
 - Abra o terminal
 $ sudo systemctl disable mysql
 ou 
