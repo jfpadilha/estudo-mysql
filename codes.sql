@@ -1,12 +1,22 @@
--- Selec simples
-SELECT * 
+# Comandos básicos:
+use dataBaseName; -- seleciona a dataBase para ser trabalhada
+
+show databases; -- mostra as bases existentes
+
+show tables; -- mostra todas as tabelas do banco selecionado
+
+show columns from tableName; -- mostra todas as colunas da tabela tableName
+
+
+# Selec simples
+SELECT *
 FROM address;
 
-SELECT * 
-FROM film 
+SELECT *
+FROM film
 WHERE film_id = 3;
 
--- ordenação
+# ordenação
 SELECT *
 FROM film
 ORDER BY title desc; -- decrescente
@@ -15,7 +25,7 @@ SELECT *
 FROM film
 ORDER BY title asc; -- crescente
 
--- COUNT  e GROUP BY (contar e agrupar)
+# COUNT  e GROUP BY (contar e agrupar)
 SELECT rental_rate, count(*)
 FROM film
 GROUP BY rental_rate
@@ -26,7 +36,7 @@ FROM film
 GROUP BY rental_duration;
 
 
--- WHERE / LIKE / IN
+# WHERE / LIKE / IN
 SELECT *
 FROM cliente
 WHERE cliente_id = 5;
@@ -59,22 +69,20 @@ SELECT *
 FROM cliente
 WHERE loja_id <> 1; -- diferente de 1
 
--- IN (está em)
+# IN (está em)
 select *
 from cliente
 where loja_id in (1, 2, 3);
 
--- INTERVALO
-select * 
+# INTERVALO
+select *
 from cliente
-where loja_id 
+where loja_id;
 
-
-
-
-
-
-
+# Listagem da descrição dos filmes em ordem alfabética
+select *
+from filme
+order by descricao asc;
 
 
 
