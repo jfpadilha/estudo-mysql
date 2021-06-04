@@ -79,10 +79,23 @@ select *
 from cliente
 where loja_id;
 
-# Listagem da descrição dos filmes em ordem alfabética
+# Exercício - Listagem da descrição dos filmes em ordem alfabética
 select *
 from filme
 order by descricao asc;
+
+# Trabalhando com mais de uma tabela JOIN
+select c.primeiro_nome, c.ultimo_nome, c.email, count(c.primeiro_nome)
+from aluguel a, cliente c
+where a.cliente_id = c.cliente_id
+group by c.primeiro_nome, c.ultimo_nome, c.email
+order by c.primeiro_nome
+
+
+
+# aluguel: aluguel_id, cliente_id
+# funcionario: funcionario_id, primeiro_nome, ultimo_nome
+# cliente: cliente_id, primeiro_nome, ultimo_nome, email
 
 
 
