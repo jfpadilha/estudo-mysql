@@ -89,9 +89,19 @@ select c.primeiro_nome, c.ultimo_nome, c.email, count(c.primeiro_nome)
 from aluguel a, cliente c
 where a.cliente_id = c.cliente_id
 group by c.primeiro_nome, c.ultimo_nome, c.email
-order by c.primeiro_nome
+order by c.primeiro_nome;
+
+# Exercício:
+-- Localizar os filmes de sua loja virtual com gênero ação
+select f.titulo, f.descricao, f.classificacao, c.nome
+from categoria c, filme f, filme_categoria fc
+where c.categoria_id = fc.categoria_id and f.filme_id = fc.filme_id and c.nome = 'Action'
+order by f.titulo;
 
 
+# categoria:  categoria_id, nome, ultima_atualizacao
+# filme_categoria: filme_id, categoria_id, ultima_atualizacao
+# filme: filme_id, titulo, descricao, classificacao
 
 # aluguel: aluguel_id, cliente_id
 # funcionario: funcionario_id, primeiro_nome, ultimo_nome
