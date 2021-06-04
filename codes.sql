@@ -98,14 +98,21 @@ from categoria c, filme f, filme_categoria fc
 where c.categoria_id = fc.categoria_id and f.filme_id = fc.filme_id and c.nome = 'Action'
 order by f.titulo;
 
+# Localize o último filme alugado de sua locadora
+select f.titulo, a.data_de_aluguel
+from aluguel a, filme f, inventario i
+where a.inventario_id = i.inventario_id and i.filme_id = f.filme_id
+order by a.data_de_aluguel desc;
 
+
+# aluguel: aluguel_id, data_de_aluguel, inventario_id, cliente_id, data_de_devolucao,
+# inventario: inventario_id, filme_id, loja_id, ultima_atualizacao
+# filme: filme_id, titulo, descricao, classificacao
+# cliente: cliente_id, primeiro_nome, ultimo_nome, email
 # categoria:  categoria_id, nome, ultima_atualizacao
 # filme_categoria: filme_id, categoria_id, ultima_atualizacao
-# filme: filme_id, titulo, descricao, classificacao
-
-# aluguel: aluguel_id, cliente_id
 # funcionario: funcionario_id, primeiro_nome, ultimo_nome
-# cliente: cliente_id, primeiro_nome, ultimo_nome, email
+
 
 
 
