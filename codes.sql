@@ -105,8 +105,14 @@ where a.inventario_id = i.inventario_id and i.filme_id = f.filme_id
 order by a.data_de_aluguel, f.titulo desc
 limit 5;
 
-use sakila_portBr;
+# inserção de valores em tabela
+insert into idioma (idioma_id, nome, ultima_atualizacao) values (8, "Criolo", "2021-06-04 23:46:49");
 
+
+
+
+#desc idioma;
+#use sakila_portBr;
 # aluguel: aluguel_id, data_de_aluguel, inventario_id, cliente_id, data_de_devolucao,
 # inventario: inventario_id, filme_id, loja_id, ultima_atualizacao
 # filme: filme_id, titulo, descricao, classificacao
