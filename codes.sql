@@ -99,11 +99,13 @@ where c.categoria_id = fc.categoria_id and f.filme_id = fc.filme_id and c.nome =
 order by f.titulo;
 
 # Localize o último filme alugado de sua locadora
-select f.titulo, a.data_de_aluguel
+select a.data_de_aluguel, f.titulo, f.descricao
 from aluguel a, filme f, inventario i
 where a.inventario_id = i.inventario_id and i.filme_id = f.filme_id
-order by a.data_de_aluguel desc;
+order by a.data_de_aluguel, f.titulo desc
+limit 5;
 
+use sakila_portBr;
 
 # aluguel: aluguel_id, data_de_aluguel, inventario_id, cliente_id, data_de_devolucao,
 # inventario: inventario_id, filme_id, loja_id, ultima_atualizacao
