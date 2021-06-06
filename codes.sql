@@ -126,4 +126,12 @@ insert into filme (titulo, descricao, ano_de_lancamento,
 	limit 1;
 
 # UPDATE
+UPDATE filme
+SET descricao = "Os que voltam de onde não vão"
+WHERE filme_id = 1001;
+
+# DELETE
+DELETE FROM filme
+WHERE filme_id = 999;
+
 
