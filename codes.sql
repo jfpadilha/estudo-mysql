@@ -134,4 +134,27 @@ WHERE filme_id = 1001;
 DELETE FROM filme
 WHERE filme_id = 999;
 
+# Somando valores com o comando SUM()
+
+-- somar o preço de locação de todos os filmes da loja
+SELECT sum(f.preco_da_locacao) soma
+FROM filme f;
+
+-- somar o preço da locação  e o preço de custo de substituição dos filmes em categoria 'Action'
+select sum(f.preco_da_locacao) Preco, sum(f.custo_de_substituicao)
+from categoria c, filme f, filme_categoria fc
+where c.categoria_id = fc.categoria_id 
+	and f.filme_id = fc.filme_id 
+	and c.nome = 'Action'
+order by f.titulo;
+
+
+
+
+
+
+
+
+
+
 
