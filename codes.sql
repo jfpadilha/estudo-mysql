@@ -125,5 +125,5 @@ insert into filme (titulo, descricao, ano_de_lancamento,
 	order by filme_id desc 
 	limit 1;
 
+# UPDATE
 
-desc filme;
