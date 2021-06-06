@@ -148,8 +148,18 @@ where c.categoria_id = fc.categoria_id
 	and c.nome = 'Action'
 order by f.titulo;
 
+# AVG() - obtendo média de valores da tabela
+select avg(f.preco_da_locacao)
+from filme f;
 
-
+-- Média de preço da locação e média do custo de substituição 
+-- para filmes com categoria 'action'
+select avg(f.preco_da_locacao) M_Preco, avg(f.custo_de_substituicao) M_Subst
+from categoria c, filme f, filme_categoria fc
+where c.categoria_id = fc.categoria_id 
+	and f.filme_id = fc.filme_id 
+	and c.nome = 'Action'
+order by f.titulo;
 
 
 
