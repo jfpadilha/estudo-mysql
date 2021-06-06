@@ -106,21 +106,24 @@ order by a.data_de_aluguel, f.titulo desc
 limit 5;
 
 # inserção de valores em tabela
-insert into idioma (idioma_id, nome, ultima_atualizacao) values (8, "Criolo", "2021-06-04 23:46:49");
+insert into idioma (nome, ultima_atualizacao) values ("Javanes", "2021-06-06 15:18:01");
+
+# 23 - Exercicio: adicionar filme na tabela filme:
+insert into filme (titulo, descricao, ano_de_lancamento, 
+	idioma_id, idioma_original_id, duracao_da_locacao, 
+    preco_da_locacao, duracao_do_filme, custo_de_substituicao, 
+    classificacao, recursos_especiais, ultima_atualizacao)
+    values
+    ("A volta dos que não foram", "Descricao da volta dos careca", 2010, 
+	4, 7, 5, 5.66, 123, 7.49,"R", "Trailers", "2021-06-05 15:03:12");
+
+	select titulo, descricao, ano_de_lancamento,  idioma_id, idioma_original_id, 
+		duracao_da_locacao, preco_da_locacao, duracao_do_filme, 
+		custo_de_substituicao,      
+		classificacao, recursos_especiais, ultima_atualizacao 
+	FROM filme 
+	order by filme_id desc 
+	limit 1;
 
 
-
-
-#desc idioma;
-#use sakila_portBr;
-# aluguel: aluguel_id, data_de_aluguel, inventario_id, cliente_id, data_de_devolucao,
-# inventario: inventario_id, filme_id, loja_id, ultima_atualizacao
-# filme: filme_id, titulo, descricao, classificacao
-# cliente: cliente_id, primeiro_nome, ultimo_nome, email
-# categoria:  categoria_id, nome, ultima_atualizacao
-# filme_categoria: filme_id, categoria_id, ultima_atualizacao
-# funcionario: funcionario_id, primeiro_nome, ultimo_nome
-
-
-
-
+desc filme;
