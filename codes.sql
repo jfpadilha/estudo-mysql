@@ -95,13 +95,16 @@ order by c.primeiro_nome;
 -- Localizar os filmes de sua loja virtual com gênero ação
 select f.titulo, f.descricao, f.classificacao, c.nome
 from categoria c, filme f, filme_categoria fc
-where c.categoria_id = fc.categoria_id and f.filme_id = fc.filme_id and c.nome = 'Action'
+where c.categoria_id = fc.categoria_id 
+	and f.filme_id = fc.filme_id 
+	and c.nome = 'Action'
 order by f.titulo;
 
 # Localize o último filme alugado de sua locadora
 select a.data_de_aluguel, f.titulo, f.descricao
 from aluguel a, filme f, inventario i
-where a.inventario_id = i.inventario_id and i.filme_id = f.filme_id
+where a.inventario_id = i.inventario_id 
+	and i.filme_id = f.filme_id
 order by a.data_de_aluguel, f.titulo desc
 limit 5;
 
@@ -160,6 +163,14 @@ where c.categoria_id = fc.categoria_id
 	and f.filme_id = fc.filme_id 
 	and c.nome = 'Action'
 order by f.titulo;
+
+# Filtrando ocorrências duplicadas pela cláusula DISTINCT
+-- select de último filme locado 
+select distinct f.titulo, f.descricao, f.filme_id
+from aluguel a, filme f, inventario i
+where a.inventario_id = i.inventario_id 
+	and i.filme_id = f.filme_id
+order by f.titulo desc;
 
 
 
