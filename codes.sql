@@ -172,8 +172,21 @@ where a.inventario_id = i.inventario_id
 	and i.filme_id = f.filme_id
 order by f.titulo desc;
 
+# Exercício:
+# Trazer lista dinstinta
+select distinct f.titulo, f.descricao, f.filme_id
+from aluguel a, filme f, inventario i
+where a.inventario_id = i.inventario_id 
+	and i.filme_id = f.filme_id
+order by f.titulo desc;
 
-
+-- Removendo duplicadas do select usando group by
+select  f.titulo, f.descricao, f.filme_id
+from aluguel a, filme f, inventario i
+where a.inventario_id = i.inventario_id 
+	and i.filme_id = f.filme_id
+group by f.titulo, f.descricao, f.filme_id
+order by f. titulo asc;
 
 
 
