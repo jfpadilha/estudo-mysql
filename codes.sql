@@ -85,6 +85,7 @@ from filme
 order by descricao asc;
 
 # Trabalhando com mais de uma tabela JOIN
+-- Listando a quantidade de aluguel por cliente
 select c.primeiro_nome, c.ultimo_nome, c.email, count(c.primeiro_nome)
 from aluguel a, cliente c
 where a.cliente_id = c.cliente_id
@@ -172,6 +173,7 @@ where a.inventario_id = i.inventario_id
 	and i.filme_id = f.filme_id
 order by f.titulo desc;
 
+#---------------| 
 # Exercício:
 # Trazer lista dinstinta
 select distinct f.titulo, f.descricao, f.filme_id
@@ -188,7 +190,18 @@ where a.inventario_id = i.inventario_id
 group by f.titulo, f.descricao, f.filme_id
 order by f. titulo asc;
 
+#-----------| Cláusula HAVING()
+# faz classificação de agrupamentos
+# faz uma segunda filtragem dentro de um agrupamento
 
+-- Listando a quantidade de aluguel por cliente
+-- Porém mostrar apenas os clientes que fizeram mais que 20 locações
+select c.primeiro_nome, c.ultimo_nome, c.email, count(c.primeiro_nome) Total_de_alugueis
+from aluguel a, cliente c
+where a.cliente_id = c.cliente_id
+group by c.primeiro_nome, c.ultimo_nome, c.email
+having count(*) >= 20
+order by c.primeiro_nome;
 
 
 
