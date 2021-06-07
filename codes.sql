@@ -183,11 +183,11 @@ where a.inventario_id = i.inventario_id
 order by f.titulo desc;
 
 -- Removendo duplicadas do select usando group by
-select  f.titulo, f.descricao, f.filme_id
+select  f.titulo, any_value(f.descricao), any_value(f.filme_id)
 from aluguel a, filme f, inventario i
 where a.inventario_id = i.inventario_id 
 	and i.filme_id = f.filme_id
-group by f.titulo, f.descricao, f.filme_id
+group by f.titulo
 order by f. titulo asc;
 
 #-----------| Cláusula HAVING()
@@ -200,8 +200,64 @@ select c.primeiro_nome, c.ultimo_nome, c.email, count(c.primeiro_nome) Total_de_
 from aluguel a, cliente c
 where a.cliente_id = c.cliente_id
 group by c.primeiro_nome, c.ultimo_nome, c.email
-having count(*) >= 20
+having count(*) >= 20 		-- comando having sempre antes de 'order by'
 order by c.primeiro_nome;
+
+#-----------| Utilizando SubConsultas / subquery
+-- consultar o menor preço de locação
+Select min(preco_da_locacao) as minimo
+from filme f;
+
+-- consultar o menor preço de locação e mostrar titulo e a descricao
+Select min(preco_da_locacao) as min, any_value(f.titulo), any_value(f.descricao)
+from filme f;
+	-- select com função e outra coluna sempre usar 'group by' ou 'any_value()
+	-- 'any_value(NomeDoCampo) evita que dê erro de "incompatible with sql_mode=only_full_group_by"
+
+-- Consultar a lista dos filmes que possuel o menor preço de locação (subquery para resolver)
+select titulo, descricao, preco_da_locacao
+FROM filme
+where preco_da_locacao = 
+	(select min(preco_da_locacao)
+     from filme)
+order by titulo;
+    -- subConsulta vai checar o menor valor e a consulta vai trazer os filmes somente com esse valor 
+
+-- Consultar a lista dos filmes que possuem o maior preço de locação
+select titulo, descricao, preco_da_locacao
+FROM filme
+where preco_da_locacao = 
+	(select max(preco_da_locacao)
+     from filme)
+order by titulo;
+
+-- Consultar a lista dos filmes que possuem valor >= que a média de preço de locação
+select titulo, descricao, preco_da_locacao
+FROM filme
+where preco_da_locacao = 
+	(select avg(preco_da_locacao)
+     from filme)
+order by titulo;
+
+-- Consultar a lista dos filmes que possuem duração >= que a média do temp de duração
+select titulo, descricao, duracao_do_filme
+FROM filme
+where duracao_do_filme >= 
+	(select avg(duracao_do_filme)
+     from filme)
+order by 3; -- coluna 3
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
