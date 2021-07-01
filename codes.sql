@@ -200,13 +200,13 @@ select c.primeiro_nome, c.ultimo_nome, c.email, count(c.primeiro_nome) Total_de_
 from aluguel a, cliente c
 where a.cliente_id = c.cliente_id
 group by c.primeiro_nome, c.ultimo_nome, c.email
-having count(*) >= 20 		-- comando having sempre antes de 'order by'
+-- having count(*) >= 45 		-- comando having sempre antes de 'order by'
 order by c.primeiro_nome;
 
-#-----------| Utilizando SubConsultas / subquery
+#-----------| Utilizando SubConsultas / subquery (select dentro de outro select)
 -- consultar o menor preço de locação
-Select min(preco_da_locacao) as minimo
-from filme f;
+Select min(preco_da_locacao)
+from filme;
 
 -- consultar o menor preço de locação e mostrar titulo e a descricao
 Select min(preco_da_locacao) as min, any_value(f.titulo), any_value(f.descricao)
@@ -235,17 +235,69 @@ order by titulo;
 select titulo, descricao, preco_da_locacao
 FROM filme
 where preco_da_locacao = 
-	(select avg(preco_da_locacao)
+	(select avg(preco_da_locacao)	-- avg = média
      from filme)
 order by titulo;
 
 -- Consultar a lista dos filmes que possuem duração >= que a média do temp de duração
+select titulo, duracao_do_filme, preco_da_locacao
+from filme
+where duracao_do_filme >=
+(select avg(duracao_do_filme)
+from filme)
+order by duracao_do_filme;
+
 select titulo, descricao, duracao_do_filme
 FROM filme
 where duracao_do_filme >= 
 	(select avg(duracao_do_filme)
      from filme)
 order by 3; -- coluna 3
+
+
+-- 
+-- 
+select c.primeiro_nome, c.ultimo_nome, c.email, count(c.primeiro_nome) Total_de_alugueis
+from aluguel a, cliente c
+where a.cliente_id = c.cliente_id
+group by c.primeiro_nome, c.ultimo_nome, c.email
+having count(*) >= 45 		-- comando having sempre antes de 'order by'
+order by c.primeiro_nome;
+
+-- Mostrar nome e endereço dos clientes que alugaram menos de 30 filmes
+-- subconsulta usando IN (está em)
+select e.endereco, e.bairro, e.cep, e.telefone
+from endereco e
+where e.endereco_id 
+IN (
+	select c.endereco_id -- select de "in" deve ter apenas 1 campo
+	from cliente c 
+	inner join aluguel a 
+    ON a.cliente_id = c.cliente_id
+	group by c.primeiro_nome, a.cliente_id
+	having count(*) > 45);
+
+
+-- Mostrar a ultima data de locação
+-- dos clientes que possuem mais que 20 locações
+select max(a.data_de_aluguel) max, c.primeiro_nome, c.cliente_id
+from aluguel a, cliente c
+where c.cliente_id = a.cliente_id
+and a.aluguel_id
+IN (
+	select al.aluguel_id
+	from aluguel al, cliente cli
+    where al.cliente_id = cli.cliente_id
+    group by al.aluguel_id);
+    -- having count(*) > 20);
+
+use sakila_portBr;
+    
+show columns from endereco;
+show columns from aluguel;
+show columns from cliente;
+
+
 
 
 
