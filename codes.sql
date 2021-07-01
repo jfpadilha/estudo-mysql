@@ -291,6 +291,28 @@ IN (
     group by al.aluguel_id);
     -- having count(*) > 20);
 
+
+-- -----
+/* TUNNING
+	Utilizado para melhorar o desempenho de uma consulta
+	1 - analisar a tabela
+	2 - sempre usar primary Key
+	3 - sempre usar alias nos nomes das tabelas
+	4 - sempre em where e joins números e menos "strings"
+*/
+# Exercício:
+-- Localizar os filmes de sua loja virtual com gênero ação
+select f.titulo, f.descricao, f.classificacao, c.nome
+from categoria c, filme f, filme_categoria fc
+where c.categoria_id = fc.categoria_id 
+	and f.filme_id = fc.filme_id 
+    and f.filme_id = 19 	#0,00035 sec
+#	and c.nome = 'Action' 0,013 sec
+order by f.titulo;
+
+
+
+
 use sakila_portBr;
     
 show columns from endereco;
