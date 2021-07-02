@@ -325,8 +325,25 @@ order by 1;
 - exportar a tabela em formato "spreed sheet" e abrir no planilhas e 
 pode-se criar um gráfico com isso */
 
+/* #38 - Consultas para retornar o total de locações recebidos durante o ano
+- mesmo para cada mês */
+
+# Entre datas com between
+select sum(p.valor) soma#, p.data_de_pagamento
+from pagamento p
+where p.data_de_pagamento 
+between '2005-01-01' and '2005-12-31';
+
+# Entre datas simples
+select sum(p.valor) soma
+from pagamento p
+where p.data_de_pagamento > '2005-01-01' 
+and p.data_de_pagamento < '2005-12-31';
 
 
+-- inner join aluguel
+# 514 - 2006
+# 66902 2005
 
 
 use sakila_portBr;
