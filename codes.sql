@@ -310,6 +310,22 @@ where c.categoria_id = fc.categoria_id
 #	and c.nome = 'Action' 0,013 sec
 order by f.titulo;
 
+/* # 37 - Dashboards
+- é a representação gráfica do que é retornado por uma query
+- usado em relatórios gerenciais */
+select c.nome, sum(f.preco_da_locacao) preco_da_locacao
+from categoria c, filme f, filme_categoria fc
+where c.categoria_id = fc.categoria_id 
+	and f.filme_id = fc.filme_id 
+group by c.nome
+order by 1;
+
+/* resumindo: fazer uma consulta
+- no Mysql workbench tem um botão acima do resultado da query "Export"
+- exportar a tabela em formato "spreed sheet" e abrir no planilhas e 
+pode-se criar um gráfico com isso */
+
+
 
 
 
