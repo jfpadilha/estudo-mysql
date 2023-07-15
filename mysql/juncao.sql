@@ -74,7 +74,107 @@ INNER JOIN profissoes AS p
 ON c.idProfissao = p.idProfissao;
 
 describe profissoes;
+
+/* 
+	DQL - Data query language
+*/
+
+-- PRODUTO CARTESIANO
+SELECT c.idCliente, c.nome, c.dataNascimento, c.telefone, p.idProfissao
+	FROM clientes AS c, profissoes AS p
+    WHERE c.idProfissao = p.idProfissao;
+
+--  INNER JOIN
+SELECT c.idCliente, c.nome, c.dataNascimento, c.telefone, p.idProfissao
+	FROM clientes AS c
+    INNER JOIN profissoes AS p
+    ON c.idProfissao = p.idProfissao;
     
+-- LEFT OUTER JOIN
+SELECT *
+	FROM clientes
+    LEFT OUTER JOIN profissoes
+    ON clientes.idProfissao = profissoes.idProfissao;
+
+-- RIGHT OUTER JOIN
+SELECT *
+	FROM clientes
+    RIGHT OUTER JOIN profissoes
+    ON clientes.idProfissao = profissoes.idProfissao
+    ORDER BY clientes.idCliente;
+
+-- FULL OUTER JOIN 	(nao funciona no mysql)
+SELECT *
+	FROM clientes
+    FULL OUTER JOIN profissoes
+    ON clientes.idProfissao = profissoes.idProfissao;
+    
+-- Consulta com UNION no qual substitui uma consulta com FULL OUTER join no mysql
+SELECT *
+	FROM clientes
+    LEFT OUTER JOIN profissoes
+    ON clientes.idProfissao = profissoes.idProfissao
+    UNION
+SELECT *
+	FROM clientes
+    RIGHT OUTER JOIN profissoes
+	ON clientes.idProfissao = profissoes.idProfissao;
+	
+
+
+
+describe profissoes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
     
