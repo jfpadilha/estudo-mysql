@@ -104,26 +104,38 @@ SELECT *
     ORDER BY clientes.idCliente;
 
 -- FULL OUTER JOIN 	(nao funciona no mysql)
-SELECT *
-	FROM clientes
-    FULL OUTER JOIN profissoes
-    ON clientes.idProfissao = profissoes.idProfissao;
+-- SELECT *
+-- 	FROM clientes
+--     FULL OUTER JOIN profissoes
+--     ON clientes.idProfissao = profissoes.idProfissao;
     
 -- Consulta com UNION no qual substitui uma consulta com FULL OUTER join no mysql
 SELECT *
 	FROM clientes
     LEFT OUTER JOIN profissoes
     ON clientes.idProfissao = profissoes.idProfissao
-    UNION
+    UNION 
 SELECT *
 	FROM clientes
     RIGHT OUTER JOIN profissoes
 	ON clientes.idProfissao = profissoes.idProfissao;
-	
 
+-- 	Cross join / junção cruzada, repete cada registro de uma tabela com outra / monta exatamente um X
+SELECT c.nome, c.dataNascimento, c.telefone, p.cargo
+	FROM clientes AS c
+    CROSS JOIN profissoes AS p;
+    
+    
+-- SELF JOIN - faze join com a própria tabela
+SELECT a.idConsumidor AS ID_a, a.nome AS ConsumidorA, b.nome AS consumidorB, b.idConsumidor AS ID_b, a.cidade AS cidade
+	FROM consumidor AS a
+    INNER JOIN consumidor AS b
+    ON a.idConsumidor <> b.idConsumidor
+    AND a.cidade = b.cidade
+    ORDER BY a.cidade;
 
-
-describe profissoes;
+describe consumidor;
+describe clientes;
 
 
 
