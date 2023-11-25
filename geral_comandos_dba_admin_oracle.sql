@@ -40,10 +40,49 @@ DESC joao.ticket;
 DESCRIBE schemaName.tableName
 
 /******* *******/
+select *
+FROM v$u
+
+/******* MANAGING USERS *******/
 
 
 /*******  *******/
 
 /*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/*******  *******/
+
+/******* NOTATIONS *******/
+/*
+- UNDO -> são registros de transações, conhecidas coletivamente como dados de Undo, informações usadas para "desfazer"
+- 
+
+
+
+
+
+
+*/
+
+
+
 
 /*******  *******/

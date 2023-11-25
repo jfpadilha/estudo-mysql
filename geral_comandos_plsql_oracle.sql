@@ -1,3 +1,213 @@
+/**********************************************************************/
+--  PÓS GRAD
+--  AULA 2
+
+-- ANOTAÇÕES
+/*
+ - tomar cuidado com o produto cartesiano, sempre primary key sendo foreign key de outro lado
+ 
+ ALTER JOIN => righ / left / full -> traz todas as colunas independente se tem ou não o dado
+
+*/
+/**********************************************************************/
+
+select first_name, department_name
+from employees e, departments d
+where d.department_id (+) = e.department_id -- o sinal (+) vai trazer todos os valores incluindo nulls
+order by 2 desc;
+
+SELECT sysdate FROM DUAL; -- obter data
+
+select table_Name FROM all_tables;
+
+show user;
+
+select first_name, DEPARTMENT_NAME
+from employees e JOIN departments d
+ON e.department_id= d.department_id
+order by 3 desc;
+
+
+select count(*) from departments;
+select count(*) from employees;
+desc departments;
+
+/**** COMANDOS DA PROFESSORA ****/
+
+
+select FIRST_NAME NOME,department_name, employee_id "ID func"
+from employees e   , departments d
+where e.department_id (+)= d.department_id
+order by 3 desc
+
+SELECT SYSDATE FROM DUAL
+desc employees
+
+select FIRST_NAME, D.department_id , employee_id
+from employees e  RIGHT OUTER JOIN departments d
+ON e.department_id = d.department_id
+order by e.EMPLOYEE_id 
+
+desc employees
+
+select * from employees
+where department_id is null
+
+SELECT salary FROM EMPLoYEES where last_name = 'Abel'
+
+
+
+-- EXERCÍCIOS AULA 2
+
+-- 1 - Mostre a estrutura das tabelas USER_TABLES e USER_TAB_COLUMNS e SYSOBJECTS:
+
+select * FROM user_tables;
+desc user_tables;
+
+SELECT * FROM user_tab_columns;
+desc user_tab_columns;
+
+
+-- 2 mostre o nome das tabelas do seu esquema
+SELECT table_name
+FROM all_tables
+WHERE OWNER = 'HR';
+
+-- 3 mostre o contepúdo da tabela departments;
+SELECT *
+FROM departments;
+
+-- 4 qual o nome do funcionário cuja EMPLOYEE_ID é 193
+SELECT EMPLOYEE_ID, first_name, last_name
+FROM employees
+WHERE EMPLOYEE_ID = 193;
+
+-- 5 qual o nome do funcionario(s) que o LAST_NAME comece por G
+SELECT last_name
+FROM employees
+WHERE last_name LIKE 'G%';
+
+-- 6 mostre todos os funcionarios cujo DEPARTMENT_ID é 20
+select *
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+WHERE d.department_id = 20;
+
+
+-- 7 faça uma query que retorne a lista de funções (JOB_ID) da tabela de empregados sem duplicidade
+SELECT DISTINCT JOB_ID
+FROM employees;
+
+-- 8 Selecione o nome e a função de todos os empregados da tabela EMPLOYEES  que os salários estejam entre 3000 e 5000
+SELECT first_name, last_name, job_id, salary
+FROM employees
+WHERE salary
+BETWEEN 3000 AND 5000
+ORDER BY salary;
+
+
+-- 9 Selecione o nome e a função de todos os empregagos ordenados pelo campo HIREDATE
+SELECT first_name, last_name, job_id, hire_date
+FROM employees
+ORDER BY hire_date;
+
+-- 10 Produza um relatório com o nome de todos os funcionários, código e nome de departamento
+SELECT e.first_name, e.last_name, d.department_id, d.department_name
+FROM employees e 
+JOIN departments d ON e.department_id = d.department_id;
+
+-- 11 produza uma relação de todos os departamentos que não possuem funcionários
+SELECT d.department_id, d.department_name
+FROM employees e
+RIGHT OUTER JOIN departments d ON e.department_id = d.department_id
+WHERE e.department_id IS NULL
+ORDER BY e.first_name ;
+
+-- test aux
+SELECT * --d.department_id, d.department_name
+FROM employees e
+RIGHT OUTER JOIN departments d ON e.department_id = d.department_id
+WHERE d.department_id = 120;
+
+
+-- 12 Liste todos os funcionários que estão no departamento cujo nome comece por IT
+SELECT *
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+WHERE INITCAP(d.department_name) LIKE 'It%';
+
+
+13 - liste o nome e o ID de todos os funcionários com seus respectivos gerentes (nome e ID também)
+
+SELECT 
+    f.employee_id, 
+    f.first_name ||' '|| f.last_name AS employee_name, 
+    f.manager_id, 
+    g.first_name ||' '||g.last_name AS manager_name, 
+    g.hire_date
+FROM employees f
+JOIN employees g ON f.manager_id = g.employee_id;
+
+teste
+
+-- 13  resolução da professora
+SELECT 
+	F.EMPLOYEE_ID AS FUNCIONARIO_ID,
+	F.FIRST_NAME ||' '|| F.LAST_NAME AS FUNCIONARIO_NOME,
+    F.HIRE_DATE,
+	G.EMPLOYEE_ID AS GERENTE_ID,
+	G.FIRST_NAME||' '|| G.LAST_NAME AS GERENTE_NOME,
+    G.HIRE_DATE
+	FROM 
+		EMPLOYEES F, EMPLOYEES G
+        WHERE F.MANAGER_ID = G.EMPLOYEE_ID
+
+
+
+-- 14 Agora liste apenas os nomes e as datas de adminissão de todos os funcionários admitidos antes de seus gerentes, juntamente com os nomes e as datas de admissão dos respectivos gerentes
+-- atribua às colunas o nome: Employee, Emp Hired, Manager e Mgr Hired, respectivamente
+SELECT *
+FROM employees e1
+WHERE e1.hire_date > (
+    SELECT *
+    FROM employees e2
+    WHERE manager_id 
+
+-- 15 Liste a média dos saários por departamento
+
+-- 16 Liste todos os funcionários que ganham mais que a média do seu departamento
+
+-- 17 exiba os detalhes dos funcionários que são gerenciados pelo mesmo gerente e que trabalhem no mesmo departamento dos funcionários: 110 e 188
+
+teste de texto dando pau
+/******************************************************************************************************/
+--  PÓS GRAD
+-- AULA 3
+/******************************************************************************************************/
+
+
+
+/******************************************************************************************************/
+--  PÓS GRAD
+-- AULA 4
+/******************************************************************************************************/
+
+
+
+
+/******************************************************************************************************/
+-- 
+/******************************************************************************************************/
+
+
+/******************************************************************************************************/
+-- 
+/******************************************************************************************************/
+
+
+/******************************************************************************************************/
+-- 
+/******************************************************************************************************/
 
 
 /******* PL/SQL COMANDS *******/
@@ -362,3 +572,12 @@ INSERT INTO carros (ID_Carro, Marca, Modelo, Ano, Cor, Quilometragem, Preco) VAL
 INSERT INTO carros (ID_Carro, Marca, Modelo, Ano, Cor, Quilometragem, Preco) VALUES (38,'Honda', NULL, 2022, 'Azul', 1000, 21000);
 
 COMMIT;
+
+
+
+/******************************************************************************************************/
+-- 
+/******************************************************************************************************/
+
+
+
